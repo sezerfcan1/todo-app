@@ -1,0 +1,62 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Başlığa Göre Ara"
+          [(ngModel)]="title"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchTitle()"
+          >
+            Ara
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Yapılacaklar Listesi</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let Todo of todo; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveTodo(Todo, i)"
+        >
+          {{ Todo.title }}
+        </li>
+      </ul>
+  
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTodo()">
+        Tümünü Sil
+      </button>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentTodo.id">
+        <div>
+          <label><strong>Başlık:</strong></label> {{ currentTodo.title }}
+        </div>
+        <div>
+          <label><strong>Açıklama:</strong></label>
+          {{ currentTodo.description }}
+        </div>
+        <div>
+          <label><strong>Durum:</strong></label>
+          {{currentTodo.status == true ? 'Tamamlandı' : 'Beklemede'}}
+        </div>
+  
+        <a class="btn btn-primary" routerLink="/todo/{{ currentTodo.id }}">
+          Düzenle
+        </a>
+      </div>
+  
+      <div *ngIf="!currentTodo">
+        <br />
+        <p>Lütfen bir tanesine tıklayın.</p>
+      </div>
+    </div>
+  </div>

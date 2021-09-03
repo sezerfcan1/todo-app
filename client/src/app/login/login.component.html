@@ -1,0 +1,10 @@
+<form class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">Bilgilerinizi Giriniz</h1>
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email adresinizi giriniz" required [(ngModel)]="loginForm.email" name="email">
+    <label for="inputPassword" class="sr-only">Parola</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Parolanızı giriniz" required [(ngModel)]="loginForm.password" name="password">
+    <div class="checkbox mb-3">
+    </div>
+    <button (click) = "login()" class="btn btn-lg btn-primary btn-block" type="submit">Devam Et</button>
+  </form>

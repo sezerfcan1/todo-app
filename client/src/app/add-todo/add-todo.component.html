@@ -1,0 +1,34 @@
+<div style="width: 500px; height: 400px;">
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group margin-top: 500 formComp">
+          <label for="title">Başlık</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            required
+            [(ngModel)]="todo.title"
+            name="title"
+          />
+        </div>
+  
+        <div class="form-group row-md-4 formComp">
+          <label for="description">Açıklama</label>
+          <input
+            class="form-control"
+            id="description"
+            required
+            [(ngModel)]="todo.description"
+            name="description"
+          />
+        </div>
+        <button (click)="saveTodo()" class="btn btn-success formComp">Kaydet</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>Ekleme Başarılı</h4>
+        <button class="btn btn-success" (click)="newTodo()">Yeni</button>
+      </div>
+    </div>
+  </div>

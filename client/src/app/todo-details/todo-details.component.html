@@ -1,0 +1,63 @@
+<div>
+  <div *ngIf="currentTodo.id" class="edit-form">
+    <h4>Seçilen</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Başlık</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentTodo.title"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Açıklama</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          [(ngModel)]="currentTodo.description"
+          name="description"
+        />
+      </div>
+
+      <div class="form-group">
+        <label><strong>Durumu:</strong></label>
+        {{currentTodo.status == true ? 'Tamamlandı' : 'Beklemede'}}
+      </div>
+    </form>
+
+    <button
+      class="btn btn-primary mr-2"
+      *ngIf="!currentTodo.status"
+      (click)="updateStatus(true)"
+    >
+      Tamamlandı
+    </button>
+    <button
+      *ngIf="currentTodo.status"
+      class="btn btn-primary mr-2"
+      (click)="updateStatus(false)"
+    >
+      Beklemede
+    </button>
+
+    <button class="btn btn-danger mr-2" (click)="deleteTodo()">Sil</button>
+
+    <button
+      type="submit"
+      class="btn btn-primary "
+      (click)="updateTodo()"
+    >
+      Güncelle
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentTodo.id">
+    <br />
+    <p>Bu belgeye erişilemiyor.</p>
+  </div>
+</div>
